@@ -22,12 +22,14 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.moviles.examenmoviles.data.CoworkingSpace
 import com.moviles.examenmoviles.ui.components.CoworkingSpaceCard
 import com.moviles.examenmoviles.ui.theme.AppBackground
 import com.moviles.examenmoviles.ui.theme.AppNavUnselected
 import com.moviles.examenmoviles.ui.theme.AppPrimary
+import com.moviles.examenmoviles.ui.theme.ExamenMovilesTheme
 
 private val mockSpaces = listOf(
     CoworkingSpace(id = 1, name = "Sky Lounge", location = "Floor 3, Building A", pricePerHour = 20.0, capacity = 8, isAvailable = true),
@@ -140,3 +142,18 @@ private fun spacesNavItemColors() = NavigationBarItemDefaults.colors(
     unselectedTextColor = AppNavUnselected,
     indicatorColor = AppBackground
 )
+
+@Preview
+@Composable
+fun SpacesScreenPreview() {
+    ExamenMovilesTheme {
+        SpacesScreen(onSpaceClick = {})
+    }
+}
+@Preview
+@Composable
+fun SpacesBottomBarPreview() {
+    ExamenMovilesTheme {
+        SpacesBottomBar()
+    }
+}
