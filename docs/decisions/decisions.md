@@ -11,4 +11,4 @@ volvería a la app más amistosa y familiable.
 
 ¿Qué mejoras realizaría a la UI implementada para mejorar la experiencia del usuario?
 
-La respondo al final cuando tenga mas ideas.
+Implementaria Autenticacion, persistencia de datos, login con google, haria funcional el nav bar
