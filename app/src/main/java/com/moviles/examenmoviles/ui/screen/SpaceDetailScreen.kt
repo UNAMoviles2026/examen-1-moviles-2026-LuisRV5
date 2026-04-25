@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.moviles.examenmoviles.data.CoworkingSpace
+import com.moviles.examenmoviles.ui.components.AppBottomBar
 import com.moviles.examenmoviles.ui.components.AppButton
 import com.moviles.examenmoviles.ui.components.AvailabilityBadge
 import com.moviles.examenmoviles.ui.components.SpaceDetailInfoRow
@@ -74,7 +75,7 @@ fun SpaceDetailScreen(
             )
         },
         bottomBar = {
-            DetailBottomBar()
+            AppBottomBar()
         }
     ) { innerPadding ->
         Column(
@@ -135,59 +136,6 @@ private fun SpaceDetailInfo(
         )
     }
 }
-
-@Composable
-private fun DetailBottomBar() {
-    NavigationBar(
-        containerColor = MaterialTheme.colorScheme.surface
-    ) {
-        NavigationBarItem(
-            selected = false,
-            onClick = { },
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.Home,
-                    contentDescription = "Home"
-                )
-            },
-            label = { Text(text = "Home") },
-            colors = detailNavItemColors()
-        )
-        NavigationBarItem(
-            selected = true,
-            onClick = { },
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.CalendarToday,
-                    contentDescription = "Reservations"
-                )
-            },
-            label = { Text(text = "Reservations") },
-            colors = detailNavItemColors()
-        )
-        NavigationBarItem(
-            selected = false,
-            onClick = { },
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.Person,
-                    contentDescription = "Profile"
-                )
-            },
-            label = { Text(text = "Profile") },
-            colors = detailNavItemColors()
-        )
-    }
-}
-
-@Composable
-private fun detailNavItemColors() = NavigationBarItemDefaults.colors(
-    selectedIconColor = AppPrimary,
-    selectedTextColor = AppPrimary,
-    unselectedIconColor = AppNavUnselected,
-    unselectedTextColor = AppNavUnselected,
-    indicatorColor = AppBackground
-)
 
 @Preview
 @Composable

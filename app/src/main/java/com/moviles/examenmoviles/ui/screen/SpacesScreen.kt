@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.moviles.examenmoviles.data.CoworkingSpace
+import com.moviles.examenmoviles.ui.components.AppBottomBar
 import com.moviles.examenmoviles.ui.components.CoworkingSpaceCard
 import com.moviles.examenmoviles.ui.theme.AppBackground
 import com.moviles.examenmoviles.ui.theme.AppNavUnselected
@@ -63,7 +64,7 @@ fun SpacesScreen(
             )
         },
         bottomBar = {
-            SpacesBottomBar()
+            AppBottomBar()
         }
     ) { innerPadding ->
         LazyColumn(
@@ -88,72 +89,10 @@ fun SpacesScreen(
     }
 }
 
-@Composable
-private fun SpacesBottomBar() {
-    NavigationBar(
-        containerColor = MaterialTheme.colorScheme.surface
-    ) {
-        NavigationBarItem(
-            selected = true,
-            onClick = { },
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.Home,
-                    contentDescription = "Home"
-                )
-            },
-            label = { Text(text = "Home") },
-            colors = spacesNavItemColors()
-        )
-
-        NavigationBarItem(
-            selected = false,
-            onClick = { },
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.CalendarToday,
-                    contentDescription = "Reservations"
-                )
-            },
-            label = { Text(text = "Reservations") },
-            colors = spacesNavItemColors()
-        )
-
-        NavigationBarItem(
-            selected = false,
-            onClick = { },
-            icon = {
-                Icon(
-                    imageVector = Icons.Outlined.Person,
-                    contentDescription = "Profile"
-                )
-            },
-            label = { Text(text = "Profile") },
-            colors = spacesNavItemColors()
-        )
-    }
-}
-
-@Composable
-private fun spacesNavItemColors() = NavigationBarItemDefaults.colors(
-    selectedIconColor = AppPrimary,
-    selectedTextColor = AppPrimary,
-    unselectedIconColor = AppNavUnselected,
-    unselectedTextColor = AppNavUnselected,
-    indicatorColor = AppBackground
-)
-
 @Preview
 @Composable
 fun SpacesScreenPreview() {
     ExamenMovilesTheme {
         SpacesScreen(onSpaceClick = {})
-    }
-}
-@Preview
-@Composable
-fun SpacesBottomBarPreview() {
-    ExamenMovilesTheme {
-        SpacesBottomBar()
     }
 }
