@@ -67,30 +67,6 @@ fun CoworkingSpaceCard(
                 },
                 text = space.location
             )
-
-            SpaceInfoRow(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Outlined.People,
-                        contentDescription = null,
-                        modifier = Modifier.size(18.dp),
-                        tint = AppIconTint
-                    )
-                },
-                text = "Capacity: ${space.capacity}"
-            )
-
-            SpaceInfoRow(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Outlined.AttachMoney,
-                        contentDescription = null,
-                        modifier = Modifier.size(18.dp),
-                        tint = AppIconTint
-                    )
-                },
-                text = "$${space.pricePerHour}/hr"
-            )
         }
     }
 }
