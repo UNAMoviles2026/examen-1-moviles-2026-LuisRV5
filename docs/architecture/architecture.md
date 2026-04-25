@@ -35,8 +35,8 @@ Se sigue una estructura de capas unidireccional para asegurar que cada component
 
 ### Explicación del flujo general del sistema
 
-1. **Entrada y Navegación**: La aplicación utiliza un `NavHost` centralizado que gestiona el flujo entre pantallas. Al iniciar, el usuario aterriza en la lista de espacios de coworking.
-2. **Carga de Datos**: La pantalla (`SpacesScreen`) se comunica con el repositorio para obtener los datos (actualmente estáticos/mock) y los expone mediante un estado reactivo.
-3. **Interacción del Usuario**: Cuando el usuario selecciona un elemento de la lista, se activa un evento de navegación que envía el identificador del espacio hacia la pantalla de detalle.
-4. **Visualización de Detalles**: La pantalla de detalle (`SpaceDetailScreen`) recibe el parámetro, recupera la información específica y la muestra utilizando componentes modulares y reutilizables.
-5. **Ciclo de Estado**: Cualquier acción (como presionar el botón de reserva) viaja de regreso desde la UI al ViewModel, manteniendo la lógica de negocio separada de la representación visual.
+1. **Entrada y Navegación**: El usuario interactúa con la aplicación nativa, donde un `NavHost` gestiona el flujo entre las diferentes pantallas (`SpacesScreen`, `SpaceDetailScreen`).
+2. **Petición del Cliente (Mobile)**: Al realizar una acción (ej. cargar espacios), la UI se comunica con el `ViewModel`, el cual utiliza el **Repositorio Móvil** para realizar una petición HTTP (usando DTOs para el transporte de datos) hacia el servidor.
+3. **Recepción en Backend (Controller)**: El **Controller** del backend recibe la petición HTTP, actuando como orquestador y redirigiéndola hacia la capa de servicios.
+4. **Lógica de Negocio (Service)**: El **Service** recibe los datos, aplica la lógica de negocio necesaria y realiza las validaciones pertinentes.5**Acceso a Datos y Persistencia (Repository & Mapper)**: El **Mapper** convierte el DTO en un objeto de **Dominio** para que el **Repository** pueda gestionar la persistencia en la base de datos.
+5. **Respuesta al Cliente**: El flujo retorna en sentido inverso; el objeto persistido se mapea de nuevo a un DTO de respuesta, pasando por el Controller hasta llegar al Repositorio Móvil, que actualiza el estado reactivo en el ViewModel para refrescar la UI.
