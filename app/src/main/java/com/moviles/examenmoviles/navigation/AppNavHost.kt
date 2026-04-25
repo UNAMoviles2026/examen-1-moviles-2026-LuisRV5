@@ -25,18 +25,18 @@ fun AppNavHost() {
 
     NavHost(
         navController = navController,
-        startDestination = `AppDestinations.kt`.SPACES,
+        startDestination = AppDestinations.SPACES,
         modifier = Modifier.fillMaxSize()
     ) {
-        composable(route = `AppDestinations.kt`.SPACES) {
+        composable(route = AppDestinations.SPACES) {
             SpacesScreen(
                 onSpaceClick = { space ->
-                    navController.navigate(`AppDestinations.kt`.spaceDetail(space.id))
+                    navController.navigate(AppDestinations.spaceDetail(space.id))
                 }
             )
         }
 
-        composable(route = `AppDestinations.kt`.SPACE_DETAIL) { backStackEntry ->
+        composable(route = AppDestinations.SPACE_DETAIL) { backStackEntry ->
             val spaceId = backStackEntry.arguments?.getString("spaceId")?.toIntOrNull()
             val space = mockSpaces.find { it.id == spaceId }
 
