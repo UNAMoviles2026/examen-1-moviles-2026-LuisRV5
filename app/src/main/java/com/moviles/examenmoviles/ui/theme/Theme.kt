@@ -39,7 +39,7 @@ private val LightColorScheme = lightColorScheme(
 
 
 @Composable
-fun UnaRoomTheme(content: @Composable () -> Unit) {
+fun ExamenMovilesTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = LightColorScheme,
         typography = Typography,
