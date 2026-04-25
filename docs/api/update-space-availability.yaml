@@ -1,0 +1,54 @@
+info:
+  title: Update Space Availability
+paths:
+  /api/spaces/{spaceId}:
+    put:
+      summary: Update space availability
+      description: Updates the availability status of a coworking space shown in the detail screen
+      parameters:
+        - name: spaceId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSpaceAvailabilityRequest'
+      responses:
+        '200':
+          description: Space updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpaceResponse'
+components:
+  schemas:
+    UpdateSpaceAvailabilityRequest:
+      type: object
+      required:
+        - isAvailable
+      properties:
+        isAvailable:
+          type: boolean
+          example: false
+    SpaceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        location:
+          type: string
+        pricePerHour:
+          type: number
+          format: double
+        capacity:
+          type: integer
+        isAvailable:
+          type: boolean
